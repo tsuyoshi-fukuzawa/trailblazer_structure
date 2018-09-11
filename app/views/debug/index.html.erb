@@ -1,0 +1,16 @@
+
+<div class="debug">
+  <%= concept("global/cell/alert", @form, notice: notice, alert: alert ) %>
+  <div class="container">
+    <h2>
+      Index
+    </h2>
+    <a href="<%= new_debug_path %>">
+      新規作成
+    </a>
+    <% @model.all.each do |model| %>
+      <!-- modelの内部情報にアクセスする場合は、Cellを経由する -->
+      <%= concept("debug/cell/list", model) %>
+    <% end %>
+  </div>
+</div>

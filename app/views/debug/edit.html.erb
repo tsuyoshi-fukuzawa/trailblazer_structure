@@ -1,0 +1,22 @@
+
+<div class="debug">
+  <%= concept("global/cell/alert", @form, notice: notice, alert: alert ) %>
+  <div class="container">
+    <h2>
+      Edit
+    </h2>
+
+    <%= form_for(@form, url: debug_path(@form), method: :PUT ) do |f| %>
+      <%= concept("debug/cell/form", @form, f: f ) %>
+
+      <div class="form-group row">
+        <div class="col-sm-3 col-form-label">
+          submit
+        </div>
+        <div class="col-sm-9">
+          <%= f.submit("送信", class: 'btn btn-primary', data: {disable_with: '送信中'}) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

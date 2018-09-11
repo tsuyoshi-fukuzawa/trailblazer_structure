@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-sm-1">
+    <%= model.id %>
+  </div>
+  <div class="col-sm-3">
+    <%= model.col_string %>
+  </div>
+  <div class="col-sm-3">
+    <%= status %>
+  </div>
+  <div class="col-sm-2">
+    <a href="<%= edit_debug_path(model) %>"]>
+      編集する
+    </a>
+  </div>
+  <div class="col-sm-2">
+    <a href="<%= debug_path(model) %>" data-method='delete'>
+      削除する
+    </a>
+  </div>
+</div>

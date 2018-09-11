@@ -1,0 +1,27 @@
+<% notice = options[:notice] %>
+<% alert  = options[:alert] %>
+
+<% if model.present? && model.errors.full_messages.present? %>
+  <div class="alert alert-warning"%>
+    以下の項目をご確認ください
+    <ul>
+      <% model.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if notice.present? %>
+  <div class="alert alert-info">
+    <%= notice %>
+  </div>
+<% end %>
+
+<% if alert.present? %>
+  <div class="alert alert-warning">
+    <%= alert %>
+  </div>
+<% end %>
