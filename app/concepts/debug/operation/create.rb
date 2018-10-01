@@ -1,4 +1,5 @@
 class Debug::Create < Trailblazer::Operation
+
   # option["model"]を生成する
   step Model(Debug, :new)
 
@@ -13,8 +14,11 @@ class Debug::Create < Trailblazer::Operation
   # # 独自メソッドを実行する場合
   step :some_method
 
-  # Saveを発行する
-  step Contract::Persist()
+  step Wrap( MyTransaction ) {
+    # Saveを発行する
+    step Contract::Persist()
+    step :rollback_check
+  }
 
   def some_method(options)
     # メソッド内でnil or falseを返すと、Controllerにエラーで戻せる
@@ -24,4 +28,13 @@ class Debug::Create < Trailblazer::Operation
       false
     end
   end
+
+  def rollback_check(options, params:, **)
+    if params[:raise].present?
+      raise
+    else
+      true
+    end
+  end
+
 end

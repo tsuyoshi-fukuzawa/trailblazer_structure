@@ -34,6 +34,23 @@ RSpec.describe Debug::Create, type: :feature do
       expect(debug.col_text).to eq('b')
     end
 
+    it 'rollbackテスト' do
+
+      params = ActionController::Parameters.new(
+        debug: {
+          col_string: 'a',
+          col_text: 'b'
+        },
+        raise: true
+      )
+      begin
+        result = Debug::Create.call(params)
+      rescue
+      end
+      # モデル
+      expect(Debug.all.size).to eq(0)
+    end
+
     it '異常: col_stringが必須パラメータ' do
       params = ActionController::Parameters.new(
         debug: {
