@@ -75,4 +75,4 @@ gem 'cells-rails'
 #
 gem 'rspec-cells'
 gem 'rspec-rails'
-
+gem 'spring-commands-rspec'
