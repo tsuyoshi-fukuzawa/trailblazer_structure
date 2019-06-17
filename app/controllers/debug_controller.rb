@@ -1,5 +1,11 @@
 class DebugController < ApplicationController
 
+  def all
+    @debug = Debug.all.first
+    p @debugs
+    return render json: DebugRepresenter.new(@debug).to_json
+  end
+
   def index
     # Debug::IndexのOperationの中でmodelをセットする。
     # result["model"]でも、@modelでもこの値は利用できる。
